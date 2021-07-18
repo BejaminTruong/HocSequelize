@@ -1,5 +1,5 @@
 "use strict";
-const { Model, DataTypes } = require("sequelize");
+const { Model } = require("sequelize");
 const task = require("./task");
 const User = require("./user");
 module.exports = (sequelize, DataTypes) => {
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate() {
       // define association here
     }
   }
@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       task_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
           model: task,
           key: "id",
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       user_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
           model: User,
           key: "id",

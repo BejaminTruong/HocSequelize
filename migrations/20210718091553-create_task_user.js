@@ -1,22 +1,19 @@
 "use strict";
+const { task, User } = require("../models");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("task_users", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
+    await queryInterface.createTable("task_user", {
       task_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: task,
           key: "id",
         },
       },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: User,
           key: "id",
@@ -24,7 +21,8 @@ module.exports = {
       },
     });
   },
+
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("task_users");
+    await queryInterface.dropTable("task_user");
   },
 };
