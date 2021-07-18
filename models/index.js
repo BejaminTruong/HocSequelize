@@ -43,17 +43,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-//define many-many associations
-// db.task = require('./task')(sequelize, Sequelize);
-// db.User = require('./user')(sequelize, Sequelize);
-// db.task_user = require('./task_user')(sequelize, Sequelize);
-// db.task.belongsToMany(db.User, {
-//   through: db.task_user,
-//   foreignKey: "task_id",
-// });
-// db.User.belongsToMany(db.task, {
-//   through: db.task_user,
-//   foreignKey: "user_id",
-// });
-
 module.exports = db;

@@ -1,21 +1,24 @@
 "use strict";
-const { task, User } = require("../models");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("task_user", {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       task_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
-          model: task,
+          model: "tasks",
           key: "id",
         },
       },
       user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
-          model: User,
+          model: "Users",
           key: "id",
         },
       },
